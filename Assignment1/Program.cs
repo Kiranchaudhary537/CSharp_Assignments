@@ -4,7 +4,7 @@ namespace Assignment1
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Console.WriteLine("Enter employee ID:");
             int id = int.Parse(Console.ReadLine());
@@ -17,12 +17,18 @@ namespace Assignment1
 
             // Create employee object
             Employee employee = new Employee(id, name, departmentName);
+            employee.PrintCalledMethod += PrintMethod;
 
             // Print employee details
             Console.WriteLine($"ID: {employee.GetId()}");
             Console.WriteLine($"Name: {employee.GetName()}");
             Console.WriteLine($"Department Name: {employee.GetDepartmentName()}");
 
+        }
+        // event handler
+        public static void PrintMethod(object sender, string e)
+        {
+            Console.WriteLine(e);
         }
     }
 }

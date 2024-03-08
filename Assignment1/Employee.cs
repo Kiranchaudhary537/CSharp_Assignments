@@ -9,9 +9,9 @@ namespace Assignment1
     {
         private int Id;
         private string Name;
-        private string DepartmentName;
-        public delegate void PrintCalledEventHandler();
-        public Employee(int id, string name, string departmentName)
+        private object DepartmentName;
+        public event EventHandler<string> PrintCalledMethod;
+        public Employee(int id, string name, object departmentName)
         {
             Id = id;
             Name = name;
@@ -22,28 +22,46 @@ namespace Assignment1
 
         public int GetId()
         {
-            PrintCalledEventHandler EventCalled;
-            EventCalled += GetId;
-            EventCalled("On Getid called");
+            OnMethodCalled("\nGetId() method called");
             return Id;
         }
 
         public string GetName()
         {
-            //PrintCalledEventHandler OnMethodCalled("GetName() method called");
+            OnMethodCalled("\nGetName() method called");
             return Name;
         }
 
-        public string GetDepartmentName()
+        public object GetDepartmentName()
         {
-            //PrintCalledEventHandler OnMethodCalled("GetDepartmentName() method called");
+            OnMethodCalled("\nGetDepartmentName() method called");
             return DepartmentName;
         }
 
+        // Method to update Employee Id
+        public void UpdateEmployee(int newId)
+        {
+            Id = newId;
+        }
+
+        // Method to update Employee Name
+        public void UpdateEmployee(string newName)
+        {
+            Name = newName;
+        }
+
+        // Method to update Employee DepartmentName
+        public void UpdateEmployee(object newDepartment)
+        {
+            DepartmentName = newDepartment;
+        }
+
+        //event method
         protected virtual void OnMethodCalled(string e)
         {
-            System.Console.WriteLine(e);
+            PrintCalledMethod?.Invoke(this, e);
         }
 
     }
+    //Here  DepartmentName's datatype string used to run overloaded methods.
 }
