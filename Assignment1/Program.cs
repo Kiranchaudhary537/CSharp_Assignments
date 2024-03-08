@@ -17,6 +17,8 @@ namespace Assignment1
 
             // Create employee object
             Employee employee = new Employee(id, name, departmentName);
+
+            //subscript method to eventhandler
             employee.PrintCalledMethod += PrintMethod;
 
             // Print employee details
