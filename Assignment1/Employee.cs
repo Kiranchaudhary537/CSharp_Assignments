@@ -63,5 +63,5 @@ namespace Assignment1
         }
 
     }
-    //Here  DepartmentName's datatype string used to run overloaded methods.
+    //Here  DepartmentName's datatype object used to run overloaded methods.
 }
